@@ -1,7 +1,9 @@
+import style from './app.module.scss';
+
 function App() {
 	return (
 		<>
-            App
+            <div className={style.mapContainer}></div>
 		</>
 	)
 }
