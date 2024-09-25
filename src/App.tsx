@@ -16,6 +16,7 @@ function App() {
 				style: import.meta.env.VITE_MAPBOX_STYLE_URL as string,
 				zoom: 12,
 				minZoom: 12,
+				maxZoom: 20,
 				center: [126.978, 37.566],
 			});
 
