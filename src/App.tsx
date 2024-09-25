@@ -13,10 +13,19 @@ function App() {
 		if (mapContainerRef.current) {
 			mapRef.current = new mapboxgl.Map({
 				container: mapContainerRef.current,
-				style: import.meta.env.VITE_MAPBOX_STYLE as string,
+				style: import.meta.env.VITE_MAPBOX_STYLE_URL as string,
 				zoom: 12,
 				minZoom: 12,
 				center: [126.978, 37.566],
+			});
+
+			mapRef.current.on('load', () => {
+				if (mapRef.current) {
+					mapRef.current.addSource('dem', {
+						type: 'raster-dem',
+						url: 'mapbox://mapbox.mapbox-terrain-dem-v1'
+					});
+				}
 			});
 		}
 
@@ -29,7 +38,7 @@ function App() {
 
 	return (
 		<>
-			<div style={{ width: '100vw', height: '100vh' }} ref={mapContainerRef}></div>
+			<div style={{width: '100vw', height: '100vh'}} ref={mapContainerRef}></div>
 		</>
 	)
 }
